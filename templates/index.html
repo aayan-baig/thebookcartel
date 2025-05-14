@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Video Modal -->
+<div id="video-modal" class="video-modal">
+  <div class="video-backdrop"></div>
+  <div class="video-box">
+    <video autoplay muted controls class="video-content">
+      <source src="{{ url_for('static', filename='videos/Book.mkv') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button class="video-close" onclick="closeVideo()">×</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Every Book Counts.</h1>
+    <p>Empowering communities through shared knowledge and compassion.</p>
+    <a href="#contact" class="cta-button">Get Involved</a>
+  </div>
+</section>
+
+
+
+<script>
+  window.addEventListener('load', () => {
+    const modal = document.getElementById('video-modal');
+    setTimeout(() => {
+      modal.style.display = 'flex';
+    }, 1600); // Wait till loader finishes
+
+    // Optional: auto-close video after 15s
+    // setTimeout(() => closeVideo(), 15000);
+  });
+
+  function closeVideo() {
+    const modal = document.getElementById('video-modal');
+    modal.style.display = 'none';
+  }
+</script>
+{% endblock %}
